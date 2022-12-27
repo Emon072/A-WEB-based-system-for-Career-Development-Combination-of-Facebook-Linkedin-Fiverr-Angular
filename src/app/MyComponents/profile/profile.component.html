@@ -1,0 +1,381 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<div id="profile-upper" *ngIf="this.ThisPersonProfileInfo[0].ProfileID!=0">
+    <div id="profile-banner-image">
+        <img *ngIf="this.ThisPersonProfileInfo[0].ProfileCoverPhoto.length==0" src={{this.Banner_image}} alt="Banner image">
+        <img *ngIf="this.ThisPersonProfileInfo[0].ProfileCoverPhoto.length" src={{this.ThisPersonProfileInfo[0].ProfileCoverPhoto}} alt="Banner image">
+    </div>
+    <div id="profile-d">
+        <div id="profile-pic">
+            <img src="{{ThisPersonProfileInfo[0].ProfilePicture}}">
+        </div>
+        <div id="u-name">{{ThisPersonProfileInfo[0].ProfileName}}</div>
+        <div class="tb" id="m-btns">
+            <div class="td">
+                <div class="m-btn"><i class="material-icons">format_list_bulleted</i><span>Activity log</span></div>
+            </div>
+            <div class="td">
+                <div class="m-btn"><i class="material-icons">lock</i><span>Privacy</span></div>
+            </div>
+        </div>
+        <input *ngIf="this.loginPersonID==this.userId" type="file" #Image accept="image/*" id="imageUploadStory" (change)="changeCoverPhoto($event)">
+        <label for="imageUploadStory">
+            <div id="edit-profile"><i class="material-icons">camera_alt</i></div>
+        </label>
+        
+    </div>
+    <div id="black-grd"></div>
+</div>
+<div id="main-content">
+    <div class="tb">
+
+
+        <div *ngIf="currentOption==1" class="td" id="l-col">
+            <div class="l-cnt">
+                <div class="cnt-label">
+                    <i class="l-i" id="l-i-i"></i>
+                    <span>Intro</span>
+                    <div class="lb-action"><i class="material-icons">edit</i></div>
+                </div>
+                <div id="i-box" *ngIf="this.ThisPersonProfileInfo.length">
+                    <div id="intro-line">{{this.ThisPersonProfileInfo[0].ProfileBio}}</div>
+                    <div *ngIf="this.userAboutInfo.length" id="u-loc"><i class="material-icons">location_on</i><a>{{this.userAboutInfo[0].Location}}</a></div>
+                </div>
+            </div>
+            <div class="l-cnt l-mrg">
+                <div class="cnt-label">
+                    <i class="l-i" id="l-i-p"></i>
+                    <span>Photos</span>
+                    <div class="lb-action" id="b-i"><i class="material-icons">keyboard_arrow_down</i></div>
+                </div>
+                <div id="photos">
+                    <div id="photoInner">
+                        <div *ngFor="let photo of this.userPhotoList">
+                            <img src="{{photo}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+
+                </div>
+
+                <div class="l-cnt l-mrg">
+                    <div class="cnt-label">
+                        <i class="l-i" id="l-i-k"></i>
+                        <span>Did You Know<i id="k-nm">1</i></span>
+                    </div>
+                    <div>
+                        <div class="q-ad-c">
+                            <a href="#" class="q-ad">
+                                <img src="https://imagizer.imageshack.com/img923/1849/4TnLy1.png">
+                                <span>My favorite superhero is...</span>
+                            </a>
+                        </div>
+                        <div class="q-ad-c">
+                            <a href="#" class="q-ad" id="add_q">
+                                <i class="material-icons">add</i>
+                                <span>Add Answer</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="t-box">
+                    <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad Choices</a>
+                    <a href="#">Cookies</a> <span id="t-more">More<i class="material-icons">arrow_drop_down</i></span>
+                    <div id="cpy-nt">Facebook &copy; <span id="curr-year"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="this.currentOption==2">
+            <div class="l-cnt">
+                <div class="cnt-label">
+                    <i class="l-i" id="l-i-i"></i>
+                    <span>Intro</span>
+                    <div class="lb-action"><i class="material-icons">edit</i></div>
+                </div>
+                <div id="i-box" *ngIf="this.ThisPersonProfileInfo.length">
+                    <div id="intro-line">{{this.ThisPersonProfileInfo[0].ProfileBio}}</div>
+                    <div *ngIf="this.userAboutInfo.length" id="u-loc"><i class="material-icons">location_on</i><a>{{this.userAboutInfo[0].Location}}</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="td" id="m-col">
+            <div class="m-mrg" id="p-tabs">
+                <div class="tb">
+                    <div class="td">
+                        <div class="tb" id="p-tabs-m">
+                            <div class="td active" id="timeLine" (click)="changeToTimeLine()"><i class="material-icons">av_timer</i><span>TIMELINE</span></div>
+                            <div class="td" id="follow" (click)="changeToFollow()"><i class="material-icons">people</i><span>FOLLOWS</span></div>
+                            <div class="td" id="photo_logo" (click)="changeToPhoto()"><i class="material-icons">photo</i><span>PHOTOS</span></div>
+                            <div class="td" id="about_logo" (click)="changeToAbout()"><i class="material-icons">explore</i><span>ABOUT</span></div>
+                            <div class="td"><i class="material-icons">archive</i><span>ARCHIVE</span></div>
+                        </div>
+                    </div>
+                    <div class="td" id="p-tab-m"><i class="material-icons">keyboard_arrow_down</i></div>
+                </div>
+            </div>
+
+            <div *ngIf="currentOption==1" class="demo" id="feedList">
+                <!-- feed starts -->
+                <div class="feed" id="opacity_changed_id">
+                    
+
+                    <!-- message sender starts -->
+                    <div class="messageSender">
+                        <div class="messageSender__top">
+                            <img  class="user__avatar"
+                                src="{{this.userProfilePictre}}" alt="" />
+                            <form>
+                                <input 
+                                    class="messageSender__input"
+                                    placeholder="What's on your mind?" type="text"/>
+                                <button type="button"
+                                    style="border-radius: 15px; height: 40px; width: 50px; margin-top: 5px; background-color: rgb(110, 70, 255);"
+                                    class="btn btn-primary btn-sm" >Post</button>
+                            </form>
+                        </div>
+
+                        <div class="messageSender__bottom">
+                            <div class="messageSender__option">
+                                <span style="color: red" class="material-icons"> videocam </span>
+                                <h3>Live</h3>
+                            </div>
+
+                            <div class="messageSender__option">
+                                <input type="file" #imageInput accept="image/*" id="imageUpload"
+                                    >
+                                <label for="imageUpload" style="color: green"
+                                    class="material-icons">photo_library</label>
+                                <h3>Photo</h3>
+                            </div>
+
+                            <div class="messageSender__option">
+                                <span style="color: orange" class="material-icons"> insert_emoticon </span>
+                                <h3>Feeling</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- message sender ends -->
+
+                    <!-- post starts -->
+                    <div *ngFor="let post of PostOfthisUser ; let i = index" [attr.data-index]="i" class="post">
+                        <div class="post__top">
+                            <img class="user__avatar post__avatar" src="{{post.ProfilePicture}}" alt="" />
+                            <div class="post__topInfo">
+                                <h3>{{post.ProfileName}}</h3>
+                                <p>{{this.getFormattedDate(post.PostDate)}}</p>
+                            </div>
+                        </div>
+
+                        <div class="post__bottom">
+                            <p>{{post.PostMessage}}</p>
+                        </div>
+
+                        <div *ngIf="post.showLikeList" class="like-wrap" id="like_list">
+
+                            <div *ngFor="let like of post.PostLikeArray">
+                                <div *ngIf="like.ProfileID!=-1" class="received-chats" style="display: flex;">
+                                    <div class="received-chats-img">
+                                        <img class="likeImage" src="{{like.ProfileImage}}">
+                                    </div>
+
+                                    <div class="like-msg">
+                                        <div class="received-msg-inbox" style="width: 150px;">
+                                            <p>{{like.ProfileName}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="post.PostImage.length" class="post__image">
+                            <img src="{{post.PostImage}}" alt="" />
+                        </div>
+
+
+
+                        <div class="post__options">
+                            <div class="post__option">
+                                <span *ngIf="post.PostLikeCnt==0" class="material-icons" (click)="addLike(post,i)">
+                                    thumb_up </span>
+                                <span *ngIf="post.PostLikeCnt==1" class="material-icons" (click)="addLike(post,i)"
+                                    style="color: blue;"> thumb_up </span>
+                                    
+                                <p (click)="show_liked_list(i)" style="margin-top: 16px;">{{post.PostLikeArray.length-1}}</p>
+                            </div>
+
+                            <div class="post__option">
+                                <span class="material-icons"> comment </span>
+                                <p style="margin-top: 16px;">{{post.PostCommentArray.length-1}}</p>
+                            </div>
+
+                            <div class="post__option">
+                                <span class="material-icons"> near_me </span>
+                                <p style="margin-top: 16px;">0</p>
+                            </div>
+                        </div>
+
+                        <div *ngFor="let comment of post.PostCommentArray">
+                            <div *ngIf="comment.ProfileName.length" class="received-chats">
+                                <div class="received-chats-img">
+                                    <img class="commentImage" src="{{comment.ProfileImage}}">
+                                </div>
+
+                                <div class="received-msg">
+                                    <p style="padding-left: 7px;">{{comment.ProfileName}}</p>
+                                    <div class="received-msg-inbox">
+                                        <p>{{comment.comment}}</p>
+                                        <span class="time">{{this.getFormattedDate(comment.CommentDate)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="messageSenderdf">
+                            <div class="messageSender__top">
+                                <img class="user__avatar" src="{{this.userProfilePictre}}" alt="" />
+                                <form>
+                                    <input [(ngModel)]="post.tmpCommnetList" name="PostComment"
+                                        class="messageSender__input" placeholder="Write Comment" type="text" />
+                                    <button type="button"
+                                        style="border-radius: 15px; height: 40px; width: 80px; margin-top: 5px; background-color: rgb(110, 70, 255);"
+                                        class="btn btn-primary btn-sm" (click)="addComment(post, i)">Comment</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- post ends -->
+
+                    <div *ngIf="PostOfthisUser.length==0">
+
+                        <!-- post starts -->
+                        <div class="post">
+
+
+
+                            <div class="post__image">
+                                <img src="../../../assets/img/no_post_found.jpg" alt="">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- feed ends -->
+            </div>
+
+
+            <!-- this is for the follow section start -->
+            <div class="follow hide" id="follow_list">
+
+                <div class="main-card">
+            
+                    <div class="parent-container">
+            
+                        <div *ngFor="let person of AllUserInfo">
+                            <div *ngIf="userMapfollow.get(person.ProfileID)==1" class="card-container">
+                                <span class="pro">PRO</span>
+                                <img class="round" src="{{person.ProfilePicture}}"
+                                    alt="https://randomuser.me/api/portraits/women/79.jpg" />
+                                <h3>{{person.ProfileName}}</h3>
+                                <h6>{{person.ProfileBio}}</h6>
+                                <div class="buttons">
+                                    
+                                    <button class="primary">
+                                        Message
+                                    </button>
+                                   
+                                    <button class="primary ghost">
+                                        Following
+                                    </button>
+                                </div>
+                                <div class="skills">
+                                    <h6>Skills</h6>
+                                    <ul>
+                                        <li>C++</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- this is for the follow section end -->
+
+            <!-- This is for photo show section start  -->
+            <div class="photo hide" id="photo">
+                <div class="l-cnt l-mrg">
+                    
+                    <div id="photos">
+                        <div id="photoInner">
+                            <div *ngFor="let photo of this.userPhotoList">
+                                <img style="height: 173px; width: 173px;" src="{{photo}}">
+                            </div>
+                        </div>
+                    </div>
+
+    
+                    <div class=" l-mrg">
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- This is for photo show section end  -->
+
+            <div class="about hide" id="about">
+                <app-about></app-about>
+            </div>
+
+        </div>
+
+
+
+        <div class="td" id="r-col" *ngIf="this.currentOption==1">
+            <div id="chat-bar">
+                
+                <div id="cts">
+                    <!-- <div class="on-ct active">
+                        <a href="#"><img src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"></a>
+                    </div>
+                    <div class="on-ct active">
+                        <a href="#"><img src="https://imagizer.imageshack.com/img923/332/1abR4H.png"></a>
+                    </div>
+                    <div class="on-ct">
+                        <a href="#"><img src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"></a>
+                    </div>
+                    <div class="on-ct active">
+                        <a href="#"><img src="https://imagizer.imageshack.com/img923/332/1abR4H.png"></a>
+                    </div>
+                    <div class="on-ct active">
+                        <a href="#"><img src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"></a>
+                    </div>
+                    <div class="on-ct">
+                        <a href="#"><img src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"></a>
+                    </div>
+                    <div class="on-ct">
+                        <a href="#"><img src="https://imagizer.imageshack.com/img923/332/1abR4H.png"></a>
+                    </div>
+                    <div class="on-ct" id="ct-sett"><i class="material-icons">settings</i></div> -->
+                </div>
+            </div>
+        </div>
+        <div style="width: 150px;">
+        </div>
+    </div>
+</div>

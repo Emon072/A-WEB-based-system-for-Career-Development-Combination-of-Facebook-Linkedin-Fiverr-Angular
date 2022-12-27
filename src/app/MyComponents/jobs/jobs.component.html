@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>JobEntry - Job Portal Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0" id="main_section">
+
+
+
+        <!-- Navbar Start -->
+
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <!--
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <h1 class="m-0 text-primary">JobEntry</h1>
+            </a>
+            -->
+
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <!--
+                    
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    
+                    -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Programming</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Websites</a>
+                            <a href="job-list.html" class="dropdown-item">Application Development</a>
+                            <a href="job-list.html" class="dropdown-item">Data</a>
+                            <a href="job-list.html" class="dropdown-item">Blockchain</a>
+                            <a href="job-list.html" class="dropdown-item">Miscellaneous</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Business</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">E-Commerce Management</a>
+                            <a href="job-detail.html" class="dropdown-item">Market Research</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Graphics & Design</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Logo & Brand Identity</a>
+                            <a href="job-detail.html" class="dropdown-item">Web & App Design</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Digital Marketing</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Social Media Marketing</a>
+                            <a href="job-detail.html" class="dropdown-item">Search Engine Optimization (SEO)</a>
+                            <a href="job-detail.html" class="dropdown-item">Search Engine Marketing (SEM)</a>
+                            <a href="job-detail.html" class="dropdown-item">E-Commerce Marketing</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Video & Animation</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Video Editing</a>
+                            <a href="job-detail.html" class="dropdown-item">Video Ads & Commercials</a>
+                            <a href="job-detail.html" class="dropdown-item">Character Animation</a>
+                            <a href="job-detail.html" class="dropdown-item">3D Product Animation</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Lifestyle</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Self Improvement</a>
+                            <a href="job-detail.html" class="dropdown-item">Leisure & Hobbies</a>
+                            <a href="job-detail.html" class="dropdown-item">Wellness & Fitness</a>
+                        </div>
+                    </div>
+
+                    <!--
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="category.html" class="dropdown-item">Job Category</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404</a>
+                            </div>
+                        </div>
+                    -->
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a (click)="changeToFormSection()" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post
+                    A Work<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+        </nav>
+
+        <!-- Navbar End -->
+
+
+        <!-- Carousel Start -->
+
+
+        <div class="container-fluid p-0">
+            <div class="owl-carousel header-carousel position-relative">
+
+                <div class="owl-carousel-item position-relative" id="carosual1">
+                    <img class="img-fluid" src="../../../assets/img-job/carousel-1.jpg" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                        style="background: rgba(43, 57, 64, .5);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">Find The Perfect Job That
+                                        You
+                                        Deserved</h1>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum
+                                        dolor at
+                                        sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea
+                                        elitr.</p>
+                                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search
+                                        A
+                                        Job</a>
+                                    <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Find A
+                                        Talent</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-carousel-item position-relative hide" id="carosual2">
+                    <img class="img-fluid" src="../../../assets/img-job/carousel-2.jpg" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                        style="background: rgba(43, 57, 64, .5);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h1 class="display-3 text-white animated slideInDown mb-4">Find The Best Startup Job
+                                        That
+                                        Fit You</h1>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum
+                                        dolor at
+                                        sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea
+                                        elitr.</p>
+                                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search
+                                        A
+                                        Job</a>
+                                    <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Find A
+                                        Talent</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Carousel End  -->
+
+
+        <!-- banner section start -->
+        <!-- <div class="banner_section layout_padding" style="margin-top: 100px ;">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <div class="container">
+                            <div class="banner_taital_main">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h1 class="banner_taital">This is an example later add some picture and design
+                                        </h1>
+                                        <p class="banner_text">Eiusmod tempor incididunt ut labore et dolore magna
+                                            aliqua</p>
+                                        <div class="btn_main">
+                                            <div class="about_bt active"><a href="#" style="text-decoration:none">About
+                                                    Us</a></div>
+                                            <div class="quote_bt"><a href="#" style="text-decoration:none">Get A
+                                                    Quote</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="image_1"><img class="img-fluid" src="../../../assets/img/log.svg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <a class="carousel-control-prev" href="#my_slider" style="text-decoration:none" role="button"
+                    data-slide="prev">
+                    <i class="fa fa-arrow-left" style="font-size:24px"></i>
+                </a>
+                <a class="carousel-control-next" href="#my_slider" style="text-decoration:none" role="button"
+                    data-slide="next">
+                    <i class="fa fa-arrow-right" style="font-size:24px"></i>
+                </a>
+            </div>
+        </div> -->
+        <!--banner section end -->
+
+
+
+        <!-- Search Start -->
+        <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control border-0" placeholder="Keyword" />
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select border-0">
+                                    <option selected>Category</option>
+                                    <option value="1">Category 1</option>
+                                    <option value="2">Category 2</option>
+                                    <option value="3">Category 3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select border-0">
+                                    <option selected>Location</option>
+                                    <option value="1">Location 1</option>
+                                    <option value="2">Location 2</option>
+                                    <option value="3">Location 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-dark border-0 w-100">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search End -->
+
+        <!-- Category Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
+                <div class="row g-4" id="icon_id" style="cursor: pointer;">
+                    <div *ngFor="let cat of categoryList" class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a (click)="gotoThisCategory(cat)" class="cat-item rounded p-4" style="text-decoration:none">
+                            <i class="{{cat.CategoryIcon}}"></i>
+                            <h6 class="mb-3">{{cat.CategoryName}}</h6>
+                            <p class="mb-0">{{this.myCatAvailable.get(cat.CategoryName)}} Available</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Category End -->
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="row g-0 about-bg rounded overflow-hidden">
+                            <div class="col-6 text-start">
+                                <img class="img-fluid w-100" src="../../../assets/img-job/about-1.jpg">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid" src="../../../assets/img-job/about-2.jpg"
+                                    style="width: 85%; margin-top: 15%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid" src="../../../assets/img-job/about-3.jpg" style="width: 85%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid w-100" src="../../../assets/img-job/about-4.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <h1 class="mb-4">We Help To Get The Best Job And Find A Talent</h1>
+                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
+                            diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna
+                            dolore erat amet</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Tempor erat elitr rebum at clita</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Aliqu diam amet diam et eos</p>
+                        <p><i class="fa fa-check text-primary me-3"></i>Clita duo justo magna dolore erat amet</p>
+                        <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+
+    <div class="form_section hide" id="form">
+        <app-work-form></app-work-form>
+    </div>
+
+    <!-- =-----job details section -------------- -->
+    <div class="job_deatails hide" id="job_details">
+
+        <!-- Navbar Start -->
+
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <!--
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <h1 class="m-0 text-primary">JobEntry</h1>
+            </a>
+            -->
+
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <!--
+                    
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    
+                    -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Programming</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Websites</a>
+                            <a href="job-list.html" class="dropdown-item">Application Development</a>
+                            <a href="job-list.html" class="dropdown-item">Data</a>
+                            <a href="job-list.html" class="dropdown-item">Blockchain</a>
+                            <a href="job-list.html" class="dropdown-item">Miscellaneous</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Business</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">E-Commerce Management</a>
+                            <a href="job-detail.html" class="dropdown-item">Market Research</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Graphics & Design</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Logo & Brand Identity</a>
+                            <a href="job-detail.html" class="dropdown-item">Web & App Design</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Digital Marketing</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Social Media Marketing</a>
+                            <a href="job-detail.html" class="dropdown-item">Search Engine Optimization (SEO)</a>
+                            <a href="job-detail.html" class="dropdown-item">Search Engine Marketing (SEM)</a>
+                            <a href="job-detail.html" class="dropdown-item">E-Commerce Marketing</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Video & Animation</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Video Editing</a>
+                            <a href="job-detail.html" class="dropdown-item">Video Ads & Commercials</a>
+                            <a href="job-detail.html" class="dropdown-item">Character Animation</a>
+                            <a href="job-detail.html" class="dropdown-item">3D Product Animation</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Lifestyle</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Self Improvement</a>
+                            <a href="job-detail.html" class="dropdown-item">Leisure & Hobbies</a>
+                            <a href="job-detail.html" class="dropdown-item">Wellness & Fitness</a>
+                        </div>
+                    </div>
+
+                    <!--
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="category.html" class="dropdown-item">Job Category</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404</a>
+                            </div>
+                        </div>
+                    -->
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a (click)="changeToFormSection()" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post
+                    A Work<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+        </nav>
+
+        <!-- Navbar End -->
+
+        <!-- Carousel Start -->
+
+
+        <div class="container-fluid p-0">
+            <div class="owl-carousel header-carousel position-relative">
+
+                <div class="owl-carousel-item position-relative" id="carosual1">
+                    <img style="height: 40%; width: 100%; opacity: 0.5;" class="img-fluid" src="{{this.thisWorkInfo.WorkPicture}}" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                        style="background: rgba(43, 57, 64, .5);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-10 col-lg-8">
+                                    <h1 style="color: rgb(0, 123, 255);" class="display-3 animated slideInDown mb-4"><b><p>{{this.thisWorkInfo.WorkTittle}}</b></h1>
+                                    <p class="fs-5 fw-medium text-white mb-4 pb-2">{{this.thisWorkInfo.WorkSummery}}</p>
+                                    <a  class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Get This Plan</a>
+                                    <a (click)="sendMessage(this.thisWorkInfo.ProfileID)" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Message</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Carousel End  -->
+
+        <!-- Job Detail Start -->
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row gy-5 gx-4">
+                    <div class="col-lg-8">
+                        <div style="cursor: pointer;" class="d-flex align-items-center mb-5">
+                            <img  (click)="gotoThisProfile(this.thisWorkInfo.ProfileID)" class="flex-shrink-0 img-fluid border rounded" src="{{this.thisWorkInfo.ProfilePicture}}" alt="" style="width: 80px; height: 80px;">
+                            <div class="text-start ps-4">
+                                <h3 style="cursor: pointer;" (click)="gotoThisProfile(this.thisWorkInfo.ProfileID)" class="mb-3">{{this.thisWorkInfo.ProfileName}}</h3>
+                                
+                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>${{this.thisWorkInfo.StartingMoney}}</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <h4 class="mb-3">Job description</h4>
+                            <p>{{this.thisWorkInfo.WorkDetails}}</p>
+                            
+                            
+                        </div>
+        
+                        
+                    </div>
+        
+                    <div class="col-lg-4">
+                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                            <h4 class="mb-4">Summery</h4>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: 01 Jan, 2045</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: 123 Position</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: Full Time</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: $123 - $456</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Location: New York, USA</p>
+                            <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line: 01 Jan, 2045</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Job Detail End -->
+
+    </div>
+
+    <div class="cat hide" id="show_cat">
+        <!-- Navbar Start -->
+
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <!--
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <h1 class="m-0 text-primary">JobEntry</h1>
+            </a>
+            -->
+
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <!--
+                    
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    
+                    -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Programming</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Websites</a>
+                            <a href="job-list.html" class="dropdown-item">Application Development</a>
+                            <a href="job-list.html" class="dropdown-item">Data</a>
+                            <a href="job-list.html" class="dropdown-item">Blockchain</a>
+                            <a href="job-list.html" class="dropdown-item">Miscellaneous</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Business</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">E-Commerce Management</a>
+                            <a href="job-detail.html" class="dropdown-item">Market Research</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Graphics & Design</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Logo & Brand Identity</a>
+                            <a href="job-detail.html" class="dropdown-item">Web & App Design</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Digital Marketing</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Social Media Marketing</a>
+                            <a href="job-detail.html" class="dropdown-item">Search Engine Optimization (SEO)</a>
+                            <a href="job-detail.html" class="dropdown-item">Search Engine Marketing (SEM)</a>
+                            <a href="job-detail.html" class="dropdown-item">E-Commerce Marketing</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Video & Animation</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Video Editing</a>
+                            <a href="job-detail.html" class="dropdown-item">Video Ads & Commercials</a>
+                            <a href="job-detail.html" class="dropdown-item">Character Animation</a>
+                            <a href="job-detail.html" class="dropdown-item">3D Product Animation</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Lifestyle</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Self Improvement</a>
+                            <a href="job-detail.html" class="dropdown-item">Leisure & Hobbies</a>
+                            <a href="job-detail.html" class="dropdown-item">Wellness & Fitness</a>
+                        </div>
+                    </div>
+
+                    <!--
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="category.html" class="dropdown-item">Job Category</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404</a>
+                            </div>
+                        </div>
+                    -->
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a (click)="changeToFormSection()" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post
+                    A Work<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+        </nav>
+
+        <!-- Navbar End -->
+
+        <!-- Category Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">{{this.tittleOfMainCat}}</h1>
+                <div *ngFor="let i of subCatList" style="padding-bottom: 100px;">
+                    <h4 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">{{i}}</h4>
+                    <div style="display: flex;">
+                        <div *ngFor="let work of this.AllWorkInfo">
+                            <div *ngIf=" work.WorkCatagory==this.tittleOfMainCat">
+                                <div class="main1" *ngIf="work.workSubCatagory==i" style="cursor:pointer">
+
+                                    <!--cards -->
+
+                                    <div class="card1">
+
+                                        <div *ngIf="work.WorkPicture.length" class="image">
+                                            <img src="{{work.WorkPicture}}">
+                                        </div>
+                                        <div *ngIf="work.WorkPicture.length==0" class="image">
+                                            <img
+                                                src="https://www.nature.com/nature-index/article/image/5f605fbe17c63323315eb2e2">
+                                        </div>
+                                        <div class="title">
+                                            <h1>
+                                                {{work.WorkTittle}}</h1>
+                                        </div>
+                                        <div class="profile">
+                                            <div>
+                                                <img class="profile_image" src="{{work.ProfilePicture}}">
+                                            </div>
+                                            <div style="padding-top: 15px; padding-left: 20px;">{{work.ProfileName}}
+                                            </div>
+                                        </div>
+                                        <div class="des">
+                                            <p class="summery">{{work.WorkSummery}}</p>
+                                            <button (click)="gotoThisJob(work)">Read more..</button>
+
+                                        </div>
+                                    </div>
+                                    <!--cards -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Category End -->
+
+
+    </div>
+
+</body>
+
+</html>

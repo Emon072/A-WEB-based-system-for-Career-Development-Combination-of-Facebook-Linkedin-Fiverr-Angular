@@ -1,0 +1,396 @@
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<div class="myBody">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Header Starts -->
+  <div class="header">
+    <div class="header__left">
+      <img style="background-color: white; padding-bottom: 5px;" src="../../../assets/img/logo main.png" alt="" />
+      <div class="header__input">
+        <span class="material-icons"> search </span>
+        <input type="text" placeholder="Search Here" />
+      </div>
+    </div>
+
+    <div class="header__right">
+      <div class="headerOption active" (click)="changeToHome()" id="homeLogo">
+        <i class="material-icons headerOption__icon"> home </i>
+        <h3>Home</h3>
+      </div>
+      <div class="headerOption" (click)="changeToNotification()" id="myNetworkLogo">
+        <i class="material-icons headerOption__icon"> supervisor_account </i>
+        <h3>My Network</h3>
+      </div>
+      <div class="headerOption" (click)="changeToJob()" id="jobLogo">
+        <i class="material-icons headerOption__icon"> business_center </i>
+        <h3>Jobs</h3>
+      </div>
+      <div class="headerOption " id="messageActive" (click)="ToggleMessage()">
+        <i class="material-icons headerOption__icon "> chat </i>
+        <p *ngIf="this.newMessage" class="notifications_active">{{this.newMessage}}</p>
+        <h3>Messaging</h3>
+      </div>
+
+      <div class="headerOption">
+        <i class="material-icons headerOption__icon"> notifications </i>
+        <h3>Notifications</h3>
+      </div>
+      <div class="headerOption" (click)="ToogleMe()">
+        <img src="{{this.userProfilePictre}}" class="header_profile_picture">
+      </div>
+    </div>
+
+    <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+        <div class="user-info" (click)="gotoThisUser(this.userId)" style="cursor: pointer;">
+          <img src="{{this.userProfilePictre}}" alt="">
+          <h3>{{this.userName}}</h3>
+        </div>
+        <hr>
+
+        <a href="#" class="sub-menu-link">
+          <img src="{{this.profilePictureLogo}}">
+          <p>Edit Profile</p>
+          <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link">
+          <img src="{{this.settingLogo}}">
+          <p>Settings & Privacy</p>
+          <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link">
+          <img src="{{this.heloLogo}}">
+          <p>Help & Support</p>
+          <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link" (click)="logOut()">
+          <img src="{{this.logoutLogo}}">
+          <p>Logout</p>
+          <span>></span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="sub-message-wrap" id="subMessageFinal" style="overflow-y: scroll;">
+      <div class="sub-message">
+        <!-- this section added next -->
+        <div class="container">
+          <div class="row clearfix">
+            <div class="col-lg-12">
+              <div class="card chat-app">
+                <div id="plist" class="people-list">
+
+                  <ul class="list-unstyled chat-list mt-2 mb-0">
+
+                    <div *ngFor="let message of this.messageListOfThisUser">
+
+
+                      <div *ngIf="message.MessageSenderID==this.userId">
+                        <li class="clearfix" (click)="sendFromMessageList(message)">
+                          <img style="height: 45px; width:45px;" src="{{message.MessageReceiverProfilePicture}}"
+                            alt="https://bootdey.com/img/Content/avatar/avatar1.png">
+                          <div class="about">
+                            <div class="name">{{message.MessageReceiverName}}</div>
+                            <div class="status" style="overflow-y: hidden;">{{this.message.Message}} </div>
+                          </div>
+                        </li>
+                      </div>
+                      <div *ngIf="message.MessageSenderID!=this.userId">
+                        <li class="clearfix" (click)="sendFromMessageList(message)">
+                          <img style="height: 45px; width:45px;" src="{{message.MessageSenderProfilePicture}}"
+                            alt="https://bootdey.com/img/Content/avatar/avatar1.png">
+                          <div class="about">
+                            <div class="name">{{message.MessageSenderName}}</div>
+                            <div class="status" style="overflow-y: hidden;"> {{this.message.Message}}</div>
+                          </div>
+                        </li>
+                      </div>
+
+                    </div>
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Header Ends -->
+
+  <div *ngIf="this.currentPage==0">
+    <!-- Main Body Starts -->
+    <div class="body__main">
+      <!-- Sidebar Starts -->
+      <div class="sidebar">
+        <div class="sidebar__top">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMBZX1-QKf6i-A7mTmzJ55Fgx_CsmsU9lXXV9Y-FgbcJaVRvqXdDG98ElAOhVB_XLnQLA&usqp=CAU"
+            alt="" />
+          <div class="Profile_pic_image_sidebar">
+            <img src="{{this.userProfilePictre}}">
+          </div>
+
+          <h2 style="padding-top: 5px;">{{this.userName}}</h2>
+          <h4 style="padding: 7px;">{{this.userGmail}}</h4>
+        </div>
+
+        <div class="sidebar__stats">
+          <div class="sidebar__stat">
+            <p>Who Viewed You</p>
+            <p class="sidebar__statNumber">2,453</p>
+          </div>
+          <div class="sidebar__stat">
+            <p>Views on post</p>
+            <p class="sidebar__statNumber">2,650</p>
+          </div>
+        </div>
+
+        <div class="sidebar__bottom">
+          <p>Recent</p>
+          <div *ngFor="let skill of this.recentPostTag">
+            <div class="sidebar__recentItem">
+              <span class="sidebar__hash">#</span>
+              <p>{{skill}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sidebar Ends -->
+
+      <!-- feed starts -->
+      <div class="feed" id="opacity_changed_id">
+        <div class="storyReel">
+
+
+          <!-- story starts -->
+
+          <div style="
+                background-image: url('{{this.userProfilePictre}}');
+              " class="story">
+            <input type="file" #Image accept="image/*" id="imageUploadStory" (change)="handlerFileInputStory($event)">
+            <label for="imageUploadStory">
+              <img class="user__avatar story__avatar" src="../../../assets/img/add_icon.png" alt="" />
+            </label>
+            <h4>{{this.userName}}</h4>
+          </div>
+
+          <!-- story ends -->
+
+          <div *ngFor="let story of userStoryInfo">
+            <!-- story starts -->
+            <div style="
+                    background-image: url({{story.StoryImage}}); 
+                  " class="story">
+              <img class="user__avatar story__avatar" src="{{story.ProfilePicture}}" alt="" />
+              <h4>{{story.ProfileName}}</h4>
+            </div>
+            <!-- story ends -->
+          </div>
+
+
+        </div>
+
+        <!-- message sender starts -->
+        <div class="messageSender">
+          <div class="messageSender__top">
+            <img (click)="gotoThisUser(this.userId)" class="user__avatar" src="{{this.userProfilePictre}}" alt="" />
+            <form>
+              <input [(ngModel)]="this.postMessage" [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="checkPostMessage()" class="messageSender__input" placeholder="What's on your mind?"
+                type="text" />
+              <button type="button" style="border-radius: 15px; height: 40px; width: 50px; margin-top: 5px;"
+                class="btn btn-primary btn-sm" (click)="handleButtonClick()">Post</button>
+            </form>
+          </div>
+
+          <div class="messageSender__bottom">
+            <div class="messageSender__option">
+              <span style="color: red" class="material-icons"> videocam </span>
+              <h3>Live</h3>
+            </div>
+
+            <div class="messageSender__option">
+              <input type="file" #imageInput accept="image/*" id="imageUpload" (change)="handlerFileInputPost($event)">
+              <label for="imageUpload" style="color: green" class="material-icons">photo_library</label>
+              <h3>Photo</h3>
+            </div>
+
+            <div class="messageSender__option">
+              <span style="color: orange" class="material-icons"> insert_emoticon </span>
+              <h3>Feeling</h3>
+            </div>
+          </div>
+        </div>
+        <!-- message sender ends -->
+
+        <!-- post starts -->
+        <div *ngFor="let post of PostOfthisUser ; let i = index" [attr.data-index]="i" class="post">
+          <div class="post__top">
+            <img (click)="gotoThisUser(post.ProfileID)" class="user__avatar post__avatar" src="{{post.ProfilePicture}}"
+              alt="" />
+            <div class="post__topInfo">
+              <h3>{{post.ProfileName}}</h3>
+              <p>{{this.getFormattedDate(post.PostDate)}}</p>
+            </div>
+          </div>
+
+          <div class="post__bottom">
+            <p>{{post.PostMessage}}</p>
+          </div>
+
+          <div *ngIf="post.showLikeList" class="like-wrap" id="like_list">
+
+            <div *ngFor="let like of post.PostLikeArray">
+              <div *ngIf="like.ProfileID!=-1" class="received-chats" style="display: flex;">
+                <div class="received-chats-img">
+                  <img class="likeImage" src="{{like.ProfileImage}}">
+                </div>
+
+                <div class="like-msg">
+                  <div class="received-msg-inbox" style="width: 150px;">
+                    <p>{{like.ProfileName}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div *ngIf="post.PostImage.length" class="post__image">
+            <img src="{{post.PostImage}}" alt="" />
+          </div>
+
+
+
+          <div class="post__options">
+            <div class="post__option">
+              <span *ngIf="post.PostLikeCnt==0" class="material-icons" (click)="addLike(post,i)"> thumb_up </span>
+              <span *ngIf="post.PostLikeCnt==1" class="material-icons" (click)="addLike(post,i)" style="color: blue;">
+                thumb_up </span>
+              <p (click)="show_liked_list(i)">{{post.PostLikeArray.length-1}}</p>
+            </div>
+
+            <div class="post__option">
+              <span class="material-icons"> comment </span>
+              <p>{{post.PostCommentArray.length-1}}</p>
+            </div>
+
+            <div class="post__option">
+              <span class="material-icons"> near_me </span>
+              <p>0</p>
+            </div>
+          </div>
+
+          <div *ngFor="let comment of post.PostCommentArray">
+            <div *ngIf="comment.ProfileName.length" class="received-chats">
+              <div class="received-chats-img">
+                <img class="commentImage" src="{{comment.ProfileImage}}">
+              </div>
+
+              <div class="received-msg">
+                <p style="padding-left: 7px;">{{comment.ProfileName}}</p>
+                <div class="received-msg-inbox">
+                  <p>{{comment.comment}}</p>
+                  <span class="time">{{this.getFormattedDate(comment.CommentDate)}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="messageSenderdf">
+            <div class="messageSender__top">
+              <img class="user__avatar" src="{{this.userProfilePictre}}" alt="" />
+              <form>
+                <input [(ngModel)]="post.tmpCommnetList" name="PostComment" class="messageSender__input"
+                  placeholder="Write Comment" type="text" />
+                <button type="button" style="border-radius: 15px; height: 40px; width: 80px; margin-top: 5px;"
+                  class="btn btn-primary btn-sm" (click)="addComment(post, i)">Comment</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+        <!-- post ends -->
+
+        <div *ngIf="PostOfthisUser.length==0">
+
+          <!-- post starts -->
+          <div class="post">
+
+
+
+            <div class="post__image">
+              <img src="../../../assets/img/no_post_found.jpg" alt="">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- feed ends -->
+
+      <!-- Widgets Starts -->
+      <div class="widgets" style="width: 230px;">
+        <div class="widgets__header">
+          <h2 style="padding-left: 20px;">Active List</h2>
+        </div>
+        <div *ngFor="let list of this.followListOfThisUser" style="display: flex;">
+          <img  style="height: 60px; width: 60px; border-radius: 50%; padding: 5px;" src="{{this.profileImageMap.get(list)}}">
+          <div class="active_name_design post__topInfo ">
+            <h6>{{this.profileNameMap.get(list)}}</h6>
+            <p>{{this.getFormattedDate(this.mapFollowTime.get(list))}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Widgets Ends -->
+    </div>
+    <!-- Main Body Ends -->
+  </div>
+
+  <!-- this is for tag select drop down-->
+
+  <div *ngIf="this.tmpDropDown==1" class="for_tag_select">
+    <div class="drop-container">
+      <form [formGroup]="form">
+        <ng-multiselect-dropdown formControlName="grocery" [placeholder]="'Skills'" [settings]="dropdownSettings"
+          [data]="dropdownList" (onSelect)="onItemSelect($event)">
+        </ng-multiselect-dropdown>
+      </form>
+    </div>
+  </div>
+
+
+  <div *ngIf="this.currentPage==1">
+    <app-my-network (sendMessageReciverEmitter)="sendMessageReceiverProfile($event)"
+      (sendProfileEmitter)="sendToThisProfile($event)"></app-my-network>
+  </div>
+
+  <div class="app_profile hide" id="profile_show">
+    <app-profile #app_profile></app-profile>
+  </div>
+
+  <div *ngIf="this.currentPage==3">
+    <app-jobs (sendMessageReciverEmitter)="sendMessageReceiverProfileJob($event)" (sendProfileEmitter)="sendToThisProfileJob($event)"></app-jobs>
+  </div>
+
+</div>
+
+</html>

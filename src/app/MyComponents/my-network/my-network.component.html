@@ -1,0 +1,81 @@
+  <body>
+    <!-- main body starts -->
+    <div class="main__body">
+      <!-- sidebar starts -->
+      <div class="sidebar">
+        <div class="sidebarRow">
+          <img
+            class="user__avatar"
+            src="{{this.thisPersonProfile.ProfilePicture}}"
+            alt=""
+          />
+          <h5>{{this.thisPersonProfile.ProfileName}}</h5>
+        </div>
+
+        <div class="sidebarRow">
+          <span class="material-icons"> emoji_flags </span>
+          <h5>Pages</h5>
+        </div>
+
+        <div class="sidebarRow">
+          <span class="material-icons"> people </span>
+          <h5>People</h5>
+        </div>
+
+        <div class="sidebarRow">
+          <span class="material-icons"> chat </span>
+          <h5>Messenger</h5>
+        </div>
+
+        <div class="sidebarRow">
+          <span class="material-icons"> expand_more </span>
+          <h5>More</h5>
+        </div>
+      </div>
+      <!-- sidebar ends -->
+
+      <div class="main-card">
+
+        <div class="parent-container" >
+
+          <div *ngFor="let profile of this.profileInfo;">
+            <div class="card-container">
+              <span class="pro">PRO</span>
+              <img style="cursor: pointer;" (click)="goToProfile(profile)" class="round" src="{{profile.ProfilePicture}}" alt="https://randomuser.me/api/portraits/women/79.jpg" />
+              <h3>{{profile.ProfileName}}</h3>
+              <h6>{{this.myMapLocation.get(profile.ProfileID)}}</h6>
+              <p>{{profile.ProfileBio}}</p>
+              <div class="buttons">
+                  <button class="primary" (click)="sendMessageReceiverProfile(profile)" *ngIf="this.myMapfollow.get(profile.ProfileID)==1">
+                      Message
+                  </button>
+                  <button class="primary ghost" (click)="sendMessageReceiverProfile(profile)" *ngIf="!this.myMapfollow.get(profile.ProfileID)">
+                    Message
+                </button>
+                  <button class="primary ghost" *ngIf="this.myMapfollow.get(profile.ProfileID)==1">
+                    Following
+                  </button>
+                  <button class="primary " *ngIf="!this.myMapfollow.get(profile.ProfileID)" (click)="createNewFollowers(profile)">
+                    Follow
+                </button>
+              </div>
+              <div class="skills">
+                  <h6>Skills</h6>
+                  <ul>
+                    <div *ngFor="let skill of this.myMapSkill.get(profile.ProfileID)" class="skill_div">
+                      <li *ngIf="skill.length">{{skill}}</li>
+                     
+                    </div>
+                  </ul>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    
+    </div>
+    <!-- main body ends -->
+
+   
+  </body>

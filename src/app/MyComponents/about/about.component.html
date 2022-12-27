@@ -1,0 +1,165 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container emp-profile">
+    <div class="taking-space">
+    </div>
+    <form method="post">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        {{this.user_name}}
+                    </h5>
+                    <h6>
+                        {{this.user_bio}}
+                    </h6>
+                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <div class="row" *ngIf="this.NameUpdate==1">
+                            <div class="col-md-4">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex; padding-bottom: 10px;">
+                                <input type="text" id="formControlSm" class="form-control form-control-sm" />
+                                <button type="button" class="btn btn-primary btn-sm">Update</button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="this.NameUpdate==0">
+                            <div class="col-md-4">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex;">
+                                <p>{{this.user_name}}</p>
+                                <div *ngIf="this.user_id == this.loginPesongID" class="lb-action"><i class="material-icons">edit</i></div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="this.EamilUpdate==1">
+                            <div class="col-md-4">
+                                <label>Bio</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex; padding-bottom: 10px;">
+                                <input type="text" id="formControlSm" class="form-control form-control-sm" />
+                                <button  type="button" class="btn btn-primary btn-sm">Update</button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="this.EamilUpdate==0">
+                            <div class="col-md-4">
+                                <label>Bio</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex;">
+                                <p>{{this.user_bio}}</p>
+                                <div *ngIf="this.user_id == this.loginPesongID" class="lb-action"><i class="material-icons">edit</i></div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="this.PhoneUpdate==1">
+                            <div class="col-md-4">
+                                <label>Phone Number</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex; padding-bottom: 10px;">
+                                <input  [(ngModel)]="demoAboutInfo.Phone" name="Phone" type="text" id="formControlSm" class="form-control form-control-sm" />
+                                <button type="button" class="btn btn-primary btn-sm" (click)="PhoneNumberUpdate()">Update</button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="this.PhoneUpdate==0">
+                            <div class="col-md-4">
+                                <label>Phone Number</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex;">
+                                <p>{{this.demoAboutInfo.Phone}}</p>
+                                <div *ngIf="this.user_id == this.loginPesongID" class="lb-action" (click)="PhoneNumberUpdate()"><i class="material-icons">edit</i></div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="this.LocationUpdate==1">
+                            <div class="col-md-4">
+                                <label>Location</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex; padding-bottom: 10px;">
+                                <input [(ngModel)]="demoAboutInfo.Location" name="Location" type="text" id="formControlSm" class="form-control form-control-sm" />
+                                <button type="button" class="btn btn-primary btn-sm" (click)="LocationUpdateFunction()">Update</button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="this.LocationUpdate==0">
+                            <div class="col-md-4">
+                                <label>Location</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex;">
+                                <p>{{this.demoAboutInfo.Location}}</p>
+                                <div *ngIf="this.user_id == this.loginPesongID" class="lb-action" (click)="LocationUpdateFunction()"><i class="material-icons">edit</i></div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" *ngIf="this.ProfessionUpdate==1">
+                            <div class="col-md-4">
+                                <label>Profession</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex; padding-bottom: 10px;">
+                                <input [(ngModel)]="demoAboutInfo.Profession" name="Profession" type="text" id="formControlSm" class="form-control form-control-sm" />
+                                <button type="button" class="btn btn-primary btn-sm" (click)="ProfessionUpdateFunction()">Update</button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="this.ProfessionUpdate==0">
+                            <div class="col-md-4">
+                                <label>Profession</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex;">
+                                <p>{{this.demoAboutInfo.Profession}}</p>
+                                <div *ngIf="this.user_id == this.loginPesongID" class="lb-action" (click)="ProfessionUpdateFunction()"><i class="material-icons">edit</i></div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="this.SelectSkillUpdate==1">
+                            <div class="col-md-4">
+                                <label>Skills</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex; padding-bottom: 10px;">
+                                <div class="drop-container" style="margin-bottom: 500px; width: 500px;">
+                                    <form [formGroup]="form">
+                                        <ng-multiselect-dropdown formControlName="grocery" [placeholder]="'Skills'"
+                                            [settings]="dropdownSettings" [data]="dropdownList"
+                                            (onSelect)="onItemSelect($event)">
+                                        </ng-multiselect-dropdown>
+                                    </form>
+                                    <div class="action">
+                                        <button type="button" class="btn btn-primary btn-sm"(click)="handleButtonClick()">Update</button>
+                                    </div>
+        
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="this.SelectSkillUpdate==0">
+                            <div class="col-md-4">
+                                <label>Skills</label>
+                            </div>
+                            <div class="col-md-8" style="display: flex;">
+                                <p>{{this.showSkill}}</p>
+                                <div *ngIf="this.user_id == this.loginPesongID" class="lb-action" (click)="handleButtonClick()"><i class="material-icons">edit</i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

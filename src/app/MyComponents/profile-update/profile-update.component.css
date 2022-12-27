@@ -1,0 +1,13 @@
+body{
+    margin-top:20px;
+    background:#f8f8f8
+}
+
+.profileImage {
+    height: 140px;
+    width: 140px;
+}
+
+input[type="file"] {
+    display: none;
+  }
